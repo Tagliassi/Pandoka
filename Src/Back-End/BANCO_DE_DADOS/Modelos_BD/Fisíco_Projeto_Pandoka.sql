@@ -50,6 +50,7 @@ CREATE TABLE Lotes (
 );
 
 CREATE TABLE Possui (
+    id_tab_possui int PRIMARY KEY,
     fk_Produtos_id_produto int,
     fk_Pedidos_id_pedido INT,
     quantidade INT
