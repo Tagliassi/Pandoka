@@ -107,67 +107,66 @@ VALUES (5, 'Salgados');
 -- Inserindo Produtos --
 
 -- Produto 1
-INSERT INTO Produtos (id_produto, nome, valor, data_validade, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
-VALUES (1, 'Pão Francês', 1.50, '2024-10-10', 100, 1, 1);
+INSERT INTO Produtos (id_produto, nome, valor, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
+VALUES (1, 'Pão Francês', 1.50, 100, 1, 1);
 
 -- Produto 2
-INSERT INTO Produtos (id_produto, nome, valor, data_validade, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
-VALUES (2, 'Pão de Forma Integral', 2.00, '2024-10-12', 80, 1, 1);
+INSERT INTO Produtos (id_produto, nome, valor, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
+VALUES (2, 'Pão de Forma Integral', 2.00, 80, 1, 1);
 
 -- Produto 3
-INSERT INTO Produtos (id_produto, nome, valor, data_validade, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
-VALUES (3, 'Bolo de Cenoura', 8.00, '2024-10-15', 20, 1, 2);
+INSERT INTO Produtos (id_produto, nome, valor, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
+VALUES (3, 'Bolo de Cenoura', 8.00, 20, 1, 2);
 
 -- Produto 4
-INSERT INTO Produtos (id_produto, nome, valor, data_validade, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
-VALUES (4, 'Bolo de Chocolate', 8.00, '2024-10-15', 15, 1, 2);
+INSERT INTO Produtos (id_produto, nome, valor, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
+VALUES (4, 'Bolo de Chocolate', 8.00, 15, 1, 2);
 
 -- Produto 5
-INSERT INTO Produtos (id_produto, nome, valor, data_validade, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
-VALUES (5, 'Biscoito de Chocolate', 3.50, '2024-11-01', 50, 1, 3);
+INSERT INTO Produtos (id_produto, nome, valor, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
+VALUES (5, 'Biscoito de Chocolate', 3.50, 50, 1, 3);
 
 -- Produto 6
-INSERT INTO Produtos (id_produto, nome, valor, data_validade, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
-VALUES (6, 'Biscoito de Coco', 3.50, '2024-11-01', 60, 1, 3);
+INSERT INTO Produtos (id_produto, nome, valor, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
+VALUES (6, 'Biscoito de Coco', 3.50, 60, 1, 3);
 
 -- Produto 7
-INSERT INTO Produtos (id_produto, nome, valor, data_validade, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
-VALUES (7, 'Doce de Leite', 5.00, '2024-10-30', 30, 1, 4);
+INSERT INTO Produtos (id_produto, nome, valor, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
+VALUES (7, 'Doce de Leite', 5.00, 30, 1, 4);
 
 -- Produto 8
-INSERT INTO Produtos (id_produto, nome, valor, data_validade, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
-VALUES (8, 'Brigadeiro', 2.50, '2024-10-28', 40, 1, 4);
+INSERT INTO Produtos (id_produto, nome, valor, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
+VALUES (8, 'Brigadeiro', 2.50, 40, 1, 4);
 
 -- Produto 9
-INSERT INTO Produtos (id_produto, nome, valor, data_validade, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
-VALUES (9, 'Salgado de Queijo', 3.00, '2024-10-25', 25, 1, 5);
+INSERT INTO Produtos (id_produto, nome, valor, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
+VALUES (9, 'Salgado de Queijo', 3.00, 25, 1, 5);
 
 -- Produto 10
-INSERT INTO Produtos (id_produto, nome, valor, data_validade, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
-VALUES (10, 'Salgado de Presunto', 3.00, '2024-10-25', 30, 1, 5);
+INSERT INTO Produtos (id_produto, nome, valor, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
+VALUES (10, 'Salgado de Presunto', 3.00, 30, 1, 5);
 
 -- Produto 11
-INSERT INTO Produtos (id_produto, nome, valor, data_validade, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
-VALUES (11, 'Croissant', 2.00, '2024-10-20', 20, 1, 1);
+INSERT INTO Produtos (id_produto, nome, valor, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
+VALUES (11, 'Croissant', 2.00, 20, 1, 1);
 
 -- Produto 12
-INSERT INTO Produtos (id_produto, nome, valor, data_validade, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
-VALUES (12, 'Rosquinha', 1.50, '2024-10-25', 40, 1, 3);
+INSERT INTO Produtos (id_produto, nome, valor, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
+VALUES (12, 'Rosquinha', 1.50, 40, 1, 3);
 
 -- Produto 13
-INSERT INTO Produtos (id_produto, nome, valor, data_validade, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
-VALUES (13, 'Pão de Queijo', 2.50, '2024-10-15', 30, 1, 5);
+INSERT INTO Produtos (id_produto, nome, valor, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
+VALUES (13, 'Pão de Queijo', 2.50, 30, 1, 5);
 
 -- Produto 14
-INSERT INTO Produtos (id_produto, nome, valor, data_validade, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
-VALUES (14, 'Torta de Limão', 10.00, '2024-10-22', 10, 1, 2);
+INSERT INTO Produtos (id_produto, nome, valor, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
+VALUES (14, 'Torta de Limão', 10.00, 10, 1, 2);
 
 -- Produto 15
-INSERT INTO Produtos (id_produto, nome, valor, data_validade, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
-VALUES (15, 'Torta de Morango', 10.00, '2024-10-22', 12, 1, 2);
+INSERT INTO Produtos (id_produto, nome, valor, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
+VALUES (15, 'Torta de Morango', 10.00, 12, 1, 2);
 
 -- Inserindo Pedidos Testes --
-
 -- Pedido 1
 INSERT INTO Pedidos (id_pedido, data_realizacao, observacao, fk_Clientes_id_cliente, fk_Funcionarios_id_funcionario)
 VALUES (1, '2023-09-24', 'Entregar na Rua A', 1, 1);
@@ -261,7 +260,6 @@ INSERT INTO Pedidos (id_pedido, data_realizacao, observacao, fk_Clientes_id_clie
 VALUES (13, '2023-12-22', 'Entregar na Rua J', 1, 8);
 
 -- Inserindo Lotes --
-
 -- Lote 1 for Produto 1
 INSERT INTO Lotes (numero_de_serie, data_lote, data_validade, fk_Produto_id_produto)
 VALUES ('LOTE2023001', '2023-01-15', '2023-10-10', 1);

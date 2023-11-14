@@ -4,30 +4,30 @@ USE pandoka;
 CREATE TABLE Clientes (
     id_cliente int PRIMARY KEY,
     nome varchar(100),
-    cpf varchar(20),
-    rua VARCHAR(100),
-    numero VARCHAR(20),
-    bairro VARCHAR(100),
-    cidade VARCHAR(100),
-    cep VARCHAR(20),
+    cpf varchar(11) UNIQUE,
+    rua varchar(100),
+    numero int,
+    bairro varchar(100),
+    cidade varchar(100),
+    cep varchar(8),
     data_nascimento date
 );
 
 CREATE TABLE Pedidos (
-    id_pedido INT PRIMARY KEY,
-    fk_Clientes_id_cliente int,
-    fk_Funcionarios_id_funcionario int,
+    id_pedido int PRIMARY KEY,
     data_realizacao DATE,
-    observacao VARCHAR(100)
+    observacao VARCHAR(1000),
+    fk_Clientes_id_cliente int,
+    fk_Funcionarios_id_funcionario int
 );
 
 CREATE TABLE Produtos (
     id_produto int PRIMARY KEY,
-    fk_Categoria_id_categoria int,
     nome varchar(100),
     valor decimal,
-    quantidade int,
-    disponibilidade bool
+    quantidade_estoque int,
+    disponibilidade bool,
+    fk_Categoria_id_categoria int
 );
 
 CREATE TABLE Funcionarios (
@@ -40,21 +40,22 @@ CREATE TABLE Funcionarios (
 
 CREATE TABLE Categoria (
     id_categoria int PRIMARY KEY,
-    nome varchar(100)
+    nome varchar(100) UNIQUE
+);
+
+CREATE TABLE ItensPedido (
+    fk_Produtos_id_produto int,
+    fk_Pedidos_id_pedido int,
+    quantidade int,
+    Id_itensPedido int PRIMARY KEY,
+    UNIQUE (fk_Produtos_id_produto, fk_Pedidos_id_pedido)
 );
 
 CREATE TABLE Lotes (
-    numero_serie varchar(11) PRIMARY KEY,
-    fk_Produtos_id_produto int,
-    data_validade date,
-    data_lote date
-);
-
-CREATE TABLE Possui (
-    id_tab_possui int PRIMARY KEY,
-    fk_Produtos_id_produto int,
-    fk_Pedidos_id_pedido INT,
-    quantidade INT
+    numero_de_serie varchar(25) PRIMARY KEY,
+    data_lote DATE,
+    data_validade DATE,
+    fk_Produto_id_produto int
 );
  
 ALTER TABLE Pedidos ADD CONSTRAINT FK_Pedidos_2
@@ -72,17 +73,17 @@ ALTER TABLE Produtos ADD CONSTRAINT FK_Produtos_2
     REFERENCES Categoria (id_categoria)
     ON DELETE CASCADE;
  
-ALTER TABLE Lotes ADD CONSTRAINT FK_Lotes_2
+ALTER TABLE Lotes ADD CONSTRAINT FKs_Lotes_1
+    FOREIGN KEY (fk_Produto_id_produto)
+    REFERENCES Produtos (id_produto)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE ItensPedido ADD CONSTRAINT FK_ItensPedido_1
     FOREIGN KEY (fk_Produtos_id_produto)
     REFERENCES Produtos (id_produto)
     ON DELETE RESTRICT;
  
-ALTER TABLE Possui ADD CONSTRAINT FK_Possui_1
-    FOREIGN KEY (fk_Produtos_id_produto)
-    REFERENCES Produtos (id_produto)
-    ON DELETE RESTRICT;
- 
-ALTER TABLE Possui ADD CONSTRAINT FK_Possui_2
+ALTER TABLE ItensPedido ADD CONSTRAINT FK_ItensPedido_2
     FOREIGN KEY (fk_Pedidos_id_pedido)
     REFERENCES Pedidos (id_pedido)
     ON DELETE SET NULL;
