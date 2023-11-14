@@ -1,4 +1,7 @@
 <?php
-    $url = "Location: /ClinicaA/medListar.php";	// Monta página para redirecionamento
+    // Define a URL para o redirecionamento
+    $url = "Location: /ClinicaA/medListar.php";
+
+    // Utiliza a função header para redirecionar para a URL especificada
     header($url);
 ?>

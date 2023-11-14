@@ -1,11 +1,8 @@
 <!-------------------------------------------------------------------------------
-Oficina Desenvolvimento Web
-PUCPR
-
-CONECTABD.PHP - deve ser incluído em todos os arquivos PHP que precisam de acesso à BD
-
-Profa. Cristina V. P. B. Souza
-Agosto/2022
+    Banco de Dados
+    PUCPR
+    Projeto BD
+    Novembro/2023
 ---------------------------------------------------------------------------------->
 <?php
 global $servername ;
