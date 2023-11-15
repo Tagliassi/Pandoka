@@ -5,20 +5,20 @@
 </head>
 <body>
 
-    <!-- Verificação do login do cliente -->
+    <!-- Verificação do login do funcionario -->
     <?php
         session_start();
 
-        if (!isset($_SESSION['id_cliente'])) {
-            // Se o cliente não estiver logado, redirecione para a página de login
+        if (!isset($_SESSION['id_funcionario'])) {
+            // Se o funcionario não estiver logado, redirecione para a página de login
             header("Location: ../../Front-End/HTML/Sign_And_Login/login.php");
             exit();
         }
 
-        $id_cliente = $_SESSION['id_cliente'];
+        $id_funcionario = $_SESSION['id_funcionario'];
 
         // Inclui arquivos necessários após a verificação do login
-        require '../../Front-End/HTML/Pagina_Principal/pagina_cliente.php';
+        require '../../Front-End/HTML/Pagina_Principal/pagina_funcionario.php';
         require '../../Back-End/PHP/conectaBD.php';
 
         // Cria conexão
@@ -45,7 +45,7 @@
             echo "<th width='15%'>Valor Unitário</th>";
             echo "<th width='15%'>Disponibilidade</th>";
             echo "<th width='20%'>Quantidade em Estoque</th>";
-            echo "<th width='5%'>Carrinho</th>";
+            echo "<th width='5%'>Editar</th>";
             echo "</tr>";
 
             if (mysqli_num_rows($result) > 0) {
@@ -63,19 +63,11 @@
                     echo "<td>{$row['quantidade_estoque']} unidades</td>";
                     echo "<td>";
                 
-                    // Verificação da disponibilidade do produto
-                    if ($row['disponibilidade'] == true && $row['quantidade_estoque'] > 0) {
-                        // Formulário para adicionar ao carrinho
-                        echo "<form action='../../Back-End/PHP/carrinho_compras.php' method='post'>";
-                        echo "<input type='hidden' name='produto_id' value='{$codigo}'>";
-                        echo "<input type='hidden' name='id_cliente' value='{$id_cliente}'>";
-                        echo "<input type='number' name='quantidade' min='1' max='{$row['quantidade_estoque']}' placeholder='Quantidade' required>";
-                        echo "<input type='submit' value='Adicionar ao Carrinho'>";
-                        echo "</form>";
-
-                    } else {
-                        echo "Produto Indisponível"; 
-                    }
+                    // Formulário para editar o produto
+                    echo "<form action='editar_produto.php' method='post'>";
+                    echo "<input type='hidden' name='produto_id' value='{$codigo}'>";
+                    echo "<input type='submit' value='Editar Produto'>";
+                    echo "</form>";
                 
                     echo "</td>";
                     echo "</tr>";
@@ -91,14 +83,6 @@
 
         // Fecha a conexão com o BD
         mysqli_close($conn);
-
-        $sql_pedidos = "SELECT Pedidos.id_pedido, Pedidos.data_realizacao, Produtos.nome AS nome_produto, ItensPedido.quantidade
-                FROM Pedidos
-                INNER JOIN ItensPedido ON Pedidos.id_pedido = ItensPedido.fk_Pedidos_id_pedido
-                INNER JOIN Produtos ON ItensPedido.fk_Produtos_id_produto = Produtos.id_produto
-                WHERE Pedidos.fk_Clientes_id_cliente = '$id_cliente'";
-
-        $result_pedidos = mysqli_query($conn, $sql_pedidos);
 
     ?>
 
