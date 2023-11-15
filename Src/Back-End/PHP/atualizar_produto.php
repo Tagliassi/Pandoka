@@ -18,8 +18,8 @@
 </head>
 <body onload="w3_show_nav('menuMedico')">
     <!-- Inclusão do menu -->
-    <?php require 'geral/menu.php'; ?>
-    <?php require 'bd/conectaBD.php'; ?>
+    <?php require '../../Front-End/HTML/Pagina_Principal/menu.php'; ?>
+    <?php require '../../Back-End/PHP/conectaBD.php'; ?>
 
     <!-- Conteúdo Principal: deslocado para direita em 270 pixels quando a sidebar é visível -->
     <div class="w3-main w3-container" style="margin-left:270px;margin-top:117px;">
@@ -144,7 +144,7 @@
                                         <td colspan="2" style="text-align:center">
                                             <p>
                                             <input type="submit" value="Alterar" class="w3-btn w3-red">
-                                            <input type="button" value="Cancelar" class="w3-btn w3-theme" onclick="window.location.href='medListar.php'"></p>
+                                            <input type="button" value="Cancelar" class="w3-btn w3-theme" onclick="window.location.href='catalogo_produtos.php'"></p>
                                         </td>
                                     </tr>
                                 </table>
@@ -169,11 +169,11 @@
         </div>
 
         <!-- Inclusão do modal "Sobre" -->
-        <?php require 'geral/sobre.php';?>
+        <?php require '../../Front-End/HTML/Pagina_Principal/sobre.php';?>
         <!-- FIM PRINCIPAL -->
     </div>
     <!-- Inclui RODAPE.PHP  -->
-    <?php require 'geral/rodape.php';?>
+    <?php require '../../Front-End/HTML/Pagina_Principal/rodape.php';?>
 
 </body>
 </html>

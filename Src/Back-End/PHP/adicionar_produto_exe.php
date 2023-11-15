@@ -19,8 +19,8 @@
 <body onload="w3_show_nav('menuMedico')">
 
     <!-- Inclusão do menu e conexão com o banco de dados -->
-    <?php require 'geral/menu.php';?>
-    <?php require 'bd/conectaBD.php'; ?>
+    <?php require '../../Front-End/HTML/Pagina_Principal/menu.php';?>
+    <?php require '../../Back-End/PHP/conectaBD.php'; ?>
     
     <!-- Conteúdo Principal: deslocado para direita em 270 pixels quando a sidebar é visível -->
     <div class="w3-main w3-container" style="margin-left:270px;margin-top:117px;">
@@ -89,11 +89,11 @@
         </div>
 
         <!-- Inclusão do modal "Sobre" -->
-        <?php require 'geral/sobre.php';?>
+        <?php require '../../Front-End/HTML/Pagina_Principal/sobre.php';?>
         <!-- FIM PRINCIPAL -->
     </div>
     <!-- Inclui RODAPE.PHP  -->
-    <?php require 'geral/rodape.php';?>
+    <?php require '../../Front-End/HTML/Pagina_Principal/rodape.php';?>
 
 </body>
 </html>
