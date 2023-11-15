@@ -1,0 +1,434 @@
+﻿/* Box-sizing reset for all elements */
+html {
+    box-sizing: border-box;
+  }
+  
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+  
+  /* Normalize styles for consistent rendering across browsers */
+  html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+  
+  body {
+    margin: 0;
+  }
+  
+  /* Basic block elements */
+  article, aside, details, figcaption, figure, footer, header, main, menu, nav, section {
+    display: block;
+  }
+  
+  summary {
+    display: list-item;
+  }
+  
+  /* Audio and video elements display as inline-block, with specific styling */
+  audio, canvas, progress, video {
+    display: inline-block;
+  }
+  
+  progress {
+    vertical-align: baseline;
+  }
+  
+  audio:not([controls]) {
+    display: none;
+  }
+  
+  [hidden], template {
+    display: none;
+  }
+  
+  /* Links styling */
+  a {
+    background-color: transparent;
+  }
+  
+  a:active, a:hover {
+    outline-width: 0;
+  }
+  
+  /* Abbreviation and strong/bold elements */
+  abbr[title] {
+    border-bottom: none;
+    text-decoration: underline;
+    text-decoration: underline dotted;
+  }
+  
+  b, strong {
+    font-weight: bolder;
+  }
+  
+  /* Definition element */
+  dfn {
+    font-style: italic;
+  }
+  
+  /* Marked or highlighted text */
+  mark {
+    background: #ff0;
+    color: #000;
+  }
+  
+  /* Small text */
+  small {
+    font-size: 80%;
+  }
+  
+  /* Subscript and Superscript */
+  sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+  
+  sub {
+    bottom: -0.25em;
+  }
+  
+  sup {
+    top: -0.5em;
+  }
+  
+  /* Figure element with margin */
+  figure {
+    margin: 1em 40px;
+  }
+  
+  /* Remove border around images */
+  img {
+    border-style: none;
+  }
+  
+  /* Code, keyboard, pre, samp elements with monospace font */
+  code, kbd, pre, samp {
+    font-family: monospace, monospace;
+    font-size: 1em;
+  }
+  
+  /* Horizontal rule styling */
+  hr {
+    box-sizing: content-box;
+    height: 0;
+    overflow: visible;
+  }
+  
+  /* Styling for buttons, inputs, selects, and textareas */
+  button, input, select, textarea, optgroup {
+    font: inherit;
+    margin: 0;
+  }
+  
+  optgroup {
+    font-weight: bold;
+  }
+  
+  button, input {
+    overflow: visible;
+  }
+  
+  button, [type=button], [type=reset], [type=submit] {
+    -webkit-appearance: button;
+  }
+  
+  button::-moz-focus-inner, [type=button]::-moz-focus-inner, [type=reset]::-moz-focus-inner, [type=submit]::-moz-focus-inner {
+    border-style: none;
+    padding: 0;
+  }
+  
+  button:-moz-focusring, [type=button]:-moz-focusring, [type=reset]:-moz-focusring, [type=submit]:-moz-focusring {
+    outline: 1px dotted ButtonText;
+  }
+  
+  /* Fieldset styling with border and margin */
+  fieldset {
+    border: 1px solid #c0c0c0;
+    margin: 0 2px;
+    padding: .35em .625em .75em;
+  }
+  
+  /* Legend styling */
+  legend {
+    color: inherit;
+    display: table;
+    max-width: 100%;
+    padding: 0;
+    white-space: normal;
+  }
+  
+  /* Textarea styling with overflow */
+  textarea {
+    overflow: auto;
+  }
+  
+  /* Checkbox and radio input types styling */
+  [type=checkbox], [type=radio] {
+    padding: 0;
+  }
+  
+  /* Number input type styling */
+  [type=number]::-webkit-inner-spin-button, [type=number]::-webkit-outer-spin-button {
+    height: auto;
+  }
+  
+  /* Search input type styling */
+  [type=search] {
+    -webkit-appearance: textfield;
+    outline-offset: -2px;
+  }
+  
+  [type=search]::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+  
+  /* File upload button styling */
+  ::-webkit-file-upload-button {
+    -webkit-appearance: button;
+    font: inherit;
+  }
+  
+  /* General styling for the document */
+  html, body {
+    font-family: Verdana, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+  
+  /* Heading sizes and font families */
+  h1 {
+    font-size: 36px;
+  }
+  
+  h2 {
+    font-size: 30px;
+  }
+  
+  h3 {
+    font-size: 24px;
+  }
+  
+  h4 {
+    font-size: 20px;
+  }
+  
+  h5 {
+    font-size: 18px;
+  }
+  
+  h6 {
+    font-size: 16px;
+  }
+  
+  /* Font families for specific text styles */
+  .w3-serif {
+    font-family: serif;
+  }
+  
+  .w3-sans-serif {
+    font-family: sans-serif;
+  }
+  
+  .w3-monospace {
+    font-family: monospace;
+  }
+  
+  /* Text alignment classes */
+  .w3-left-align {
+    text-align: left;
+  }
+  
+  .w3-right-align {
+    text-align: right;
+  }
+  
+  .w3-justify {
+    text-align: justify;
+  }
+  
+  .w3-center {
+    text-align: center;
+  }
+  
+  /* Text color classes */
+  .w3-text-red, .w3-hover-text-red:hover {
+    color: #f44336;
+  }
+  
+  .w3-text-green, .w3-hover-text-green:hover {
+    color: #4CAF50;
+  }
+  
+  .w3-text-blue, .w3-hover-text-blue:hover {
+    color: #2196F3;
+  }
+  
+  .w3-text-yellow, .w3-hover-text-yellow:hover {
+    color: #ffeb3b;
+  }
+  
+  .w3-text-white, .w3-hover-text-white:hover {
+    color: #fff;
+  }
+  
+  .w3-text-black, .w3-hover-text-black:hover {
+    color: #000;
+  }
+  
+  /* Background color classes */
+  .w3-white, .w3-hover-white:hover {
+    background-color: #fff;
+  }
+  
+  .w3-black, .w3-hover-black:hover {
+    background-color: #000;
+  }
+  
+  .w3-grey, .w3-hover-grey:hover, .w3-gray, .w3-hover-gray:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .w3-light-grey, .w3-hover-light-grey:hover, .w3-light-gray, .w3-hover-light-gray:hover {
+    background-color: #d3d3d3;
+  }
+  
+  .w3-dark-grey, .w3-hover-dark-grey:hover, .w3-dark-gray, .w3-hover-dark-gray:hover {
+    background-color: #616161;
+  }
+  
+  /* Border color classes */
+  .w3-border-red, .w3-hover-border-red:hover {
+    border-color: #f44336;
+  }
+  
+  .w3-border-green, .w3-hover-border-green:hover {
+    border-color: #4CAF50;
+  }
+  
+  .w3-border-blue, .w3-hover-border-blue:hover {
+    border-color: #2196F3;
+  }
+  
+  .w3-border-yellow, .w3-hover-border-yellow:hover {
+    border-color: #ffeb3b;
+  }
+  
+  .w3-border-white, .w3-hover-border-white:hover {
+    border-color: #fff;
+  }
+  
+  .w3-border-black, .w3-hover-border-black:hover {
+    border-color: #000;
+  }
+  
+  /* Container classes with max-width and centering */
+  .w3-container {
+    margin: 0 auto;
+    max-width: 970px;
+    padding: 0 20px;
+    width: 100%;
+  }
+  
+  /* Padding classes */
+  .w3-padding-16 {
+    padding: 16px;
+  }
+  
+  .w3-padding-24 {
+    padding: 24px;
+  }
+  
+  /* Margin classes */
+  .w3-margin-bottom {
+    margin-bottom: 16px;
+  }
+  
+  .w3-margin-top {
+    margin-top: 16px;
+  }
+  
+  /* Button styling with padding and colors */
+  .w3-button {
+    border: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    padding: 8px 16px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  
+  .w3-button:hover, .w3-hover-opacity:hover, .w3-hover-text-red:hover, .w3-hover-text-green:hover, .w3-hover-text-blue:hover, .w3-hover-text-yellow:hover, .w3-hover-text-white:hover, .w3-hover-text-black:hover, .w3-hover-white:hover, .w3-hover-black:hover, .w3-hover-grey:hover, .w3-hover-gray:hover, .w3-hover-light-grey:hover, .w3-hover-light-gray:hover, .w3-hover-dark-grey:hover, .w3-hover-dark-gray:hover, .w3-hover-border-red:hover, .w3-hover-border-green:hover, .w3-hover-border-blue:hover, .w3-hover-border-yellow:hover, .w3-hover-border-white:hover, .w3-hover-border-black:hover {
+    opacity: 0.8;
+  }
+  
+  /* Table styling with border-collapse and width */
+  .w3-table-all {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+  }
+  
+  /* Table row and column styling */
+  .w3-table-all th, .w3-table-all td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  /* Table header background color */
+  .w3-table-all th {
+    background-color: #f2f2f2;
+  }
+  
+  /* Form styling with max-width and margin */
+  .w3-form {
+    margin: 16px 0;
+    max-width: 500px;
+    padding: 16px;
+  }
+  
+  /* Input field styling with border, margin, and width */
+  .w3-input {
+    border: 1px solid #ccc;
+    margin-bottom: 16px;
+    padding: 8px;
+    width: 100%;
+  }
+  
+  /* Label styling with display block and margin-bottom */
+  .w3-label {
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+  /* Progress bar styling with height, border, and background color */
+  .w3-progress-container {
+    height: 20px;
+    position: relative;
+    width: 100%;
+  }
+  
+  /* Progress bar with height, background color, and width based on value */
+  .w3-progressbar {
+    background-color: #f1f1f1;
+    height: 100%;
+  }
+  
+  /* Progress bar fill with height, background color, and width based on value */
+  .w3-progressbar-1 {
+    background-color: #4CAF50;
+    height: 100%;
+    width: 65%;
+  }
+  
+  /* Hover effect on progress bar fill */
+  .w3-hover-opacity:hover, .w3-hover-text-red:hover, .w3-hover-text-green:hover, .w3-hover-text-blue:hover, .w3-hover-text-yellow:hover, .w3-hover-text-white:hover, .w3-hover-text-black:hover, .w3-hover-white:hover, .w3-hover-black:hover, .w3-hover-grey:hover, .w3-hover-gray:hover, .w3-hover-light-grey:hover, .w3-hover-light-gray:hover, .w3-hover-dark-grey:hover, .w3-hover-dark-gray:hover, .w3-hover-border-red:hover, .w3-hover-border-green:hover, .w3-hover-border-blue:hover, .w3-hover-border-yellow:hover, .w3-hover-border-white:hover, .w3-hover-border-black:hover {
+    opacity: 0.8;
+  }
+  
