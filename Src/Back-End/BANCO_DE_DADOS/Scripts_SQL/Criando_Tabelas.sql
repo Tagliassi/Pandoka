@@ -1,4 +1,4 @@
-/* Lógico_Projeto_Pandoka: */
+/* Fisíco_Projeto_Pandoka: */
 USE pandoka;
 
 CREATE TABLE Clientes (
@@ -16,7 +16,7 @@ CREATE TABLE Clientes (
 CREATE TABLE Pedidos (
     id_pedido int AUTO_INCREMENT PRIMARY KEY,
     data_realizacao DATE,
-    observacao VARCHAR(1000),
+    observacao VARCHAR(100),
     fk_Clientes_id_cliente int,
     fk_Funcionarios_id_funcionario int
 );
