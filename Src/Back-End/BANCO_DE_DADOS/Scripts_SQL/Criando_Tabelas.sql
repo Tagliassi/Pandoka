@@ -2,7 +2,7 @@
 USE pandoka;
 
 CREATE TABLE Clientes (
-    id_cliente int PRIMARY KEY,
+    id_cliente int AUTO_INCREMENT PRIMARY KEY,
     nome varchar(100),
     cpf varchar(11) UNIQUE,
     rua varchar(100),
@@ -14,7 +14,7 @@ CREATE TABLE Clientes (
 );
 
 CREATE TABLE Pedidos (
-    id_pedido int PRIMARY KEY,
+    id_pedido int AUTO_INCREMENT PRIMARY KEY,
     data_realizacao DATE,
     observacao VARCHAR(1000),
     fk_Clientes_id_cliente int,
@@ -22,7 +22,7 @@ CREATE TABLE Pedidos (
 );
 
 CREATE TABLE Produtos (
-    id_produto int PRIMARY KEY,
+    id_produto int AUTO_INCREMENT PRIMARY KEY,
     nome varchar(100),
     valor decimal,
     quantidade_estoque int,
@@ -31,7 +31,7 @@ CREATE TABLE Produtos (
 );
 
 CREATE TABLE Funcionarios (
-    id_funcionario int PRIMARY KEY,
+    id_funcionario int AUTO_INCREMENT PRIMARY KEY,
     nome varchar(100),
     data_nascimento date,
     data_admissao date,
@@ -47,7 +47,7 @@ CREATE TABLE ItensPedido (
     fk_Produtos_id_produto int,
     fk_Pedidos_id_pedido int,
     quantidade int,
-    Id_itensPedido int PRIMARY KEY,
+    Id_itensPedido int AUTO_INCREMENT PRIMARY KEY,
     UNIQUE (fk_Produtos_id_produto, fk_Pedidos_id_pedido)
 );
 
