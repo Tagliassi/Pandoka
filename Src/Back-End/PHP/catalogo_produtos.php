@@ -92,14 +92,6 @@
         // Fecha a conexão com o BD
         mysqli_close($conn);
 
-        $sql_pedidos = "SELECT Pedidos.id_pedido, Pedidos.data_realizacao, Produtos.nome AS nome_produto, ItensPedido.quantidade
-                FROM Pedidos
-                INNER JOIN ItensPedido ON Pedidos.id_pedido = ItensPedido.fk_Pedidos_id_pedido
-                INNER JOIN Produtos ON ItensPedido.fk_Produtos_id_produto = Produtos.id_produto
-                WHERE Pedidos.fk_Clientes_id_cliente = '$id_cliente'";
-
-        $result_pedidos = mysqli_query($conn, $sql_pedidos);
-
     ?>
 
 </body>
