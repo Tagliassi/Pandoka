@@ -1,5 +1,7 @@
+
 <?php
 session_start();
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['id_cliente'])) {
     require '../../Back-End/PHP/conectaBD.php'; // Caminho para o arquivo de conexão com o banco de dados
@@ -48,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['id_cliente'])) {
             // Insere um novo item no pedido
             $sql_insert_item = "INSERT INTO ItensPedido (fk_Pedidos_id_pedido, fk_Produtos_id_produto, quantidade) VALUES ('$pedido_id', '$produto_id', '$quantidade')";
             if (mysqli_query($conn, $sql_insert_item)) {
-                echo "Produto adicionado ao pedido com sucesso!";
+                echo "<p class='success-message'>Produto adicionado ao pedido com sucesso!</p>";
             } else {
                 echo "Erro ao adicionar produto ao pedido: " . mysqli_error($conn);
             }
@@ -89,17 +91,40 @@ $result_pedidos = mysqli_query($conn, $sql_pedidos);
 <head>
     <title>Seu Carrinho de Compras</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 50px;
+            background-color: #ff444b;
+            color: black; /* Alterando a cor do texto para branco */
+            font-size: 20px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
         table {
             border-collapse: collapse;
-            width: 100%;
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
         th, td {
-            border: 1px solid black;
+            border: 1px solid #ddd;
             padding: 8px;
             text-align: left;
         }
+
         th {
             background-color: #f2f2f2;
+        }
+
+        /* Estilo para a mensagem de sucesso */
+        .success-message {
+            font-weight: bold;
         }
     </style>
 </head>

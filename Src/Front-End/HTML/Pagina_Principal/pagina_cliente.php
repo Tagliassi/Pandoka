@@ -23,7 +23,7 @@
         }
 
         nav img {
-            width: 150px;
+            width: 250px;
             height: auto;
         }
 
@@ -62,7 +62,7 @@
 <body>
 
 <nav>
-    <img src="../../../Front-End/IMGS/logo_pandoka.jpeg" alt="Logo da Panificadora Pandoka">
+    <img src="../../IMGS/logo_pandoka.jpeg" alt="Logo da Panificadora Pandoka">
     <ul>
         <li><a href="../../../Back-End/PHP/catalogo_produtos.php">Catálogo de Produtos</a></li>
         <li><a href="../../../Back-End/PHP/carrinho_compras.php">Carrinho de Compras</a></li>
