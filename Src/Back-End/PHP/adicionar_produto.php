@@ -2,6 +2,57 @@
 <html>
 <head>
     <title>Adicionar Novo Produto - Panificadora Pandoka</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 50px;
+            background-color: #ff444b;
+            color: black;
+            font-size: 20px;
+        }
+
+        form {
+            background-color: white;
+            width: 40%;
+            margin-left: 30%; /* Ajustando um pouco o posicionamento horizontal */
+            margin-top: 100px;
+            padding: 20px; /* Adicionando um pouco de espaçamento interno */
+            border-radius: 8px; /* Adicionando bordas arredondadas */
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Adicionando uma sombra sutil */
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 3px;
+            border: 1px solid #ccc; /* Adicionando uma borda cinza */
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin-top: 5px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
 
