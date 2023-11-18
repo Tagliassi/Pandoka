@@ -17,18 +17,20 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['produto_id'])) {
 
     $produto_id = $_GET['produto_id'];
 
-    // Tenta executar a consulta de exclusão
-    try {
-        // Prepara a consulta SQL para deletar o produto
-        $sql = "DELETE FROM Produtos WHERE id_produto = $produto_id";
+    // Exclua os registros correspondentes na tabela lotes relacionados ao produto
+    $delete_lotes = "DELETE FROM lotes WHERE fk_Produto_id_produto = $produto_id";
 
-        if (mysqli_query($conn, $sql)) {
+    if (mysqli_query($conn, $delete_lotes)) {
+        // Em seguida, exclua o produto
+        $delete_produto = "DELETE FROM Produtos WHERE id_produto = $produto_id";
+
+        if (mysqli_query($conn, $delete_produto)) {
             echo "Produto excluído com sucesso!";
         } else {
-            throw new Exception("Erro ao excluir produto: " . mysqli_error($conn));
+            echo "Erro ao excluir produto: " . mysqli_error($conn);
         }
-    } catch (Exception $e) {
-        echo "Ocorreu um erro: " . $e->getMessage();
+    } else {
+        echo "Erro ao excluir registros relacionados na tabela lotes: " . mysqli_error($conn);
     }
 
     mysqli_close($conn);
