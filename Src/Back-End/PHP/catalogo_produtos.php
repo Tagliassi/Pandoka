@@ -2,9 +2,86 @@
 <html>
 <head>
     <title>Panificadora Pandoka</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ff444b;
+        }
+
+        .container {
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(to right, #ff444b, #ff5c61);
+        }
+
+        table.Catalogo {
+            width: 90%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-left: 30px;
+            background-color: white; /* Alterado para branco */
+        }
+
+        table.Catalogo th,
+        table.Catalogo td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            background-color: white; /* Alterado para branco */
+        }
+
+        table.Catalogo th {
+            background-color: #f2f2f2;
+        }
+
+        form {
+            display: inline-block;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin-top: 5px;
+            cursor: pointer;
+            border-radius: 3px;
+            
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        input[type="number"] {
+            width: 60px;
+            padding: 6px;
+        }
+
+        span.product-unavailable {
+            color: red;
+            font-style: italic;
+        }
+
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-
+<div class="container">
     <!-- Verificação do login do cliente -->
     <?php
         session_start();
@@ -93,6 +170,7 @@
         mysqli_close($conn);
 
     ?>
+    </div>
 
 </body>
 </html>
