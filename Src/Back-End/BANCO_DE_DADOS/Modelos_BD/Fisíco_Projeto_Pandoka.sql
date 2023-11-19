@@ -25,7 +25,7 @@ CREATE TABLE Produtos (
     fk_Categoria_id_categoria int,
     nome varchar(100),
     valor decimal,
-    quantidade int,
+    quantidade_estoque int,
     disponibilidade bool
 );
 
@@ -43,14 +43,14 @@ CREATE TABLE Categoria (
 );
 
 CREATE TABLE Lotes (
-    numero_serie varchar(11) PRIMARY KEY,
+    numero_serie varchar(25) PRIMARY KEY,
     fk_Produtos_id_produto int,
     data_validade date,
     data_lote date
 );
 
-CREATE TABLE Possui (
-    id_tab_possui int PRIMARY KEY,
+CREATE TABLE ItensPedido (
+    id_itensPedido int PRIMARY KEY,
     fk_Produtos_id_produto int,
     fk_Pedidos_id_pedido INT,
     quantidade INT
@@ -76,12 +76,12 @@ ALTER TABLE Lotes ADD CONSTRAINT FK_Lotes_2
     REFERENCES Produtos (id_produto)
     ON DELETE RESTRICT;
  
-ALTER TABLE Possui ADD CONSTRAINT FK_Possui_1
+ALTER TABLE ItensPedido ADD CONSTRAINT FK_ItensPedido_1
     FOREIGN KEY (fk_Produtos_id_produto)
     REFERENCES Produtos (id_produto)
     ON DELETE RESTRICT;
  
-ALTER TABLE Possui ADD CONSTRAINT FK_Possui_2
+ALTER TABLE ItensPedido ADD CONSTRAINT FK_ItensPedido_2
     FOREIGN KEY (fk_Pedidos_id_pedido)
     REFERENCES Pedidos (id_pedido)
     ON DELETE SET NULL;

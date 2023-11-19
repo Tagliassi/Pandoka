@@ -40,6 +40,26 @@ VALUES (9, 'Geraldo Francisco Luís Nogueira', '08570690207', 'Estrada Transamaz
 INSERT INTO Clientes (id_cliente, nome, cpf, rua, numero, bairro, cidade, cep, data_nascimento)
 VALUES (10, 'Marcelo Alexandre Márcio Martins', '71001629205', 'Estrada Transamazônica, s/n', 722, 'Sucunduri', 'Apuí', '69275970', '2001-02-03');
 
+-- Cliente 11
+INSERT INTO Clientes (id_cliente, nome, cpf, rua, numero, bairro, cidade, cep, data_nascimento)
+VALUES (11, 'Gabriel Eduardo Silva', '12345678901', 'Rua das Flores', 123, 'Centro', 'São Paulo', '01234567', '2000-11-20');
+
+-- Cliente 12
+INSERT INTO Clientes (id_cliente, nome, cpf, rua, numero, bairro, cidade, cep, data_nascimento)
+VALUES (12, 'Amanda Oliveira Santos', '98765432109', 'Avenida Principal', 456, 'Centro', 'Rio de Janeiro', '54321098', '2000-08-15');
+
+-- Cliente 13
+INSERT INTO Clientes (id_cliente, nome, cpf, rua, numero, bairro, cidade, cep, data_nascimento)
+VALUES (13, 'Isabella Pereira Souza', '45612378965', 'Rua da Amizade', 789, 'Bela Vista', 'Belo Horizonte', '67890543', '2000-05-25');
+
+-- Cliente 14
+INSERT INTO Clientes (id_cliente, nome, cpf, rua, numero, bairro, cidade, cep, data_nascimento)
+VALUES (14, 'Rafael Rodrigues Lima', '78912345602', 'Rua das Árvores', 321, 'Jardins', 'Curitiba', '89012345', '2000-02-10');
+
+-- Cliente 15
+INSERT INTO Clientes (id_cliente, nome, cpf, rua, numero, bairro, cidade, cep, data_nascimento)
+VALUES (15, 'Sophia Almeida Costa', '32165498707', 'Avenida dos Sonhos', 654, 'Parque Real', 'Salvador', '76543210', '2000-12-05');
+
 -- Inserindo Funcionários --
 
 -- Funcionário 1
@@ -82,6 +102,26 @@ VALUES (9, 'Lucas Osvaldo Osvaldo Silveira', '2000-08-27', '2023-09-24', 4000.00
 INSERT INTO Funcionarios (id_funcionario, nome, data_nascimento, data_admissao, salario)
 VALUES (10, 'Davi Henry Kevin da Paz', '2000-01-09', '2023-09-24', 3900.00);
 
+-- Funcionário 11
+INSERT INTO Funcionarios (id_funcionario, nome, data_nascimento, data_admissao, salario)
+VALUES (11, 'Luana Oliveira Santos', '1999-10-22', '2023-09-24', 3200.00);
+
+-- Funcionário 12
+INSERT INTO Funcionarios (id_funcionario, nome, data_nascimento, data_admissao, salario)
+VALUES (12, 'Felipe Silva Pereira', '1998-12-18', '2023-09-24', 3300.00);
+
+-- Funcionário 13
+INSERT INTO Funcionarios (id_funcionario, nome, data_nascimento, data_admissao, salario)
+VALUES (13, 'Mariana Rodrigues Lima', '1997-11-30', '2023-09-24', 3400.00);
+
+-- Funcionário 14
+INSERT INTO Funcionarios (id_funcionario, nome, data_nascimento, data_admissao, salario)
+VALUES (14, 'Gustavo Almeida Costa', '1996-09-25', '2023-09-24', 3500.00);
+
+-- Funcionário 15
+INSERT INTO Funcionarios (id_funcionario, nome, data_nascimento, data_admissao, salario)
+VALUES (15, 'Camila Pereira Souza', '1995-08-10', '2023-09-24', 3600.00);
+
 -- Inserindo Categorias --
 
 -- Categoria 1: Pães
@@ -103,6 +143,46 @@ VALUES (4, 'Doces');
 -- Categoria 5: Salgados
 INSERT INTO Categoria (id_categoria, nome)
 VALUES (5, 'Salgados');
+
+-- Categoria 6: Tortas
+INSERT INTO Categoria (id_categoria, nome)
+VALUES (6, 'Tortas');
+
+-- Categoria 7: Bebidas
+INSERT INTO Categoria (id_categoria, nome)
+VALUES (7, 'Bebidas');
+
+-- Categoria 8: Congelados
+INSERT INTO Categoria (id_categoria, nome)
+VALUES (8, 'Congelados');
+
+-- Categoria 9: Outros
+INSERT INTO Categoria (id_categoria, nome)
+VALUES (9, 'Massas Especiais');
+
+-- Categoria 10: Sobremesas
+INSERT INTO Categoria (id_categoria, nome)
+VALUES (10, 'Sobremesas');
+
+-- Categoria 11: Pizzas
+INSERT INTO Categoria (id_categoria, nome)
+VALUES (11, 'Pizzas');
+
+-- Categoria 12: Sanduíches Naturais
+INSERT INTO Categoria (id_categoria, nome)
+VALUES (12, 'Sanduíches Naturais');
+
+-- Categoria 13: Massas Especiais
+INSERT INTO Categoria (id_categoria, nome)
+VALUES (13, 'Bolos Decorados');
+
+-- Categoria 14: Biscoitos Artesanais
+INSERT INTO Categoria (id_categoria, nome)
+VALUES (14, 'Biscoitos Artesanais');
+
+-- Categoria 15: Bolos Decorados
+INSERT INTO Categoria (id_categoria, nome)
+VALUES (15, 'Outros');
 
 -- Inserindo Produtos --
 
@@ -128,7 +208,7 @@ VALUES (5, 'Biscoito de Chocolate', 3.50, 50, 1, 3);
 
 -- Produto 6
 INSERT INTO Produtos (id_produto, nome, valor, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
-VALUES (6, 'Biscoito de Coco', 3.50, 60, 1, 3);
+VALUES (6, 'Biscoito de Coco', 3.50, 60, 1, 14);
 
 -- Produto 7
 INSERT INTO Produtos (id_produto, nome, valor, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
@@ -136,7 +216,7 @@ VALUES (7, 'Doce de Leite', 5.00, 30, 1, 4);
 
 -- Produto 8
 INSERT INTO Produtos (id_produto, nome, valor, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
-VALUES (8, 'Brigadeiro', 2.50, 40, 1, 4);
+VALUES (8, 'Brigadeiro', 2.50, 40, 1, 10);
 
 -- Produto 9
 INSERT INTO Produtos (id_produto, nome, valor, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
@@ -152,19 +232,19 @@ VALUES (11, 'Croissant', 2.00, 20, 1, 1);
 
 -- Produto 12
 INSERT INTO Produtos (id_produto, nome, valor, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
-VALUES (12, 'Rosquinha', 1.50, 40, 1, 3);
+VALUES (12, 'Rosquinha', 1.50, 40, 1, 14);
 
 -- Produto 13
 INSERT INTO Produtos (id_produto, nome, valor, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
-VALUES (13, 'Pão de Queijo', 2.50, 30, 1, 5);
+VALUES (13, 'Pão de Queijo', 2.50, 30, 1, 1);
 
 -- Produto 14
 INSERT INTO Produtos (id_produto, nome, valor, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
-VALUES (14, 'Torta de Limão', 10.00, 10, 1, 2);
+VALUES (14, 'Torta de Limão', 10.00, 10, 1, 6);
 
 -- Produto 15
 INSERT INTO Produtos (id_produto, nome, valor, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria)
-VALUES (15, 'Torta de Morango', 10.00, 12, 1, 2);
+VALUES (15, 'Torta de Morango', 10.00, 12, 1, 6);
 
 -- Inserindo Pedidos Testes --
 -- Pedido 1
@@ -251,13 +331,41 @@ VALUES (19, 3, 10, 1), (20, 5, 10, 4);
 INSERT INTO Pedidos (id_pedido, data_realizacao, observacao, fk_Clientes_id_cliente, fk_Funcionarios_id_funcionario)
 VALUES (11, '2023-10-08', 'Irei Buscar', 10, 10);
 
+-- Itens do Pedido 11
+INSERT INTO ItensPedido (Id_itensPedido, fk_Produtos_id_produto, fk_Pedidos_id_pedido, quantidade)
+VALUES (21, 1, 11, 2), (22, 7, 11, 1);
+
 -- Pedido 12
 INSERT INTO Pedidos (id_pedido, data_realizacao, observacao, fk_Clientes_id_cliente, fk_Funcionarios_id_funcionario)
 VALUES (12, '2023-04-01', 'Vou pegar', 10, 10);
 
+-- Itens do Pedido 12
+INSERT INTO ItensPedido (Id_itensPedido, fk_Produtos_id_produto, fk_Pedidos_id_pedido, quantidade)
+VALUES (23, 2, 12, 3), (24, 8, 12, 2);
+
 -- Pedido 13
 INSERT INTO Pedidos (id_pedido, data_realizacao, observacao, fk_Clientes_id_cliente, fk_Funcionarios_id_funcionario)
 VALUES (13, '2023-12-22', 'Entregar na Rua J', 1, 8);
+
+-- Itens do Pedido 13
+INSERT INTO ItensPedido (Id_itensPedido, fk_Produtos_id_produto, fk_Pedidos_id_pedido, quantidade)
+VALUES (25, 3, 13, 1), (26, 5, 13, 4);
+
+-- Pedido 14
+INSERT INTO Pedidos (id_pedido, data_realizacao, observacao, fk_Clientes_id_cliente, fk_Funcionarios_id_funcionario)
+VALUES (14, '2023-11-10', 'Entregar na Rua K', 2, 3);
+
+-- Itens do Pedido 14
+INSERT INTO ItensPedido (Id_itensPedido, fk_Produtos_id_produto, fk_Pedidos_id_pedido, quantidade)
+VALUES (27, 4, 14, 2), (28, 6, 14, 3);
+
+-- Pedido 15
+INSERT INTO Pedidos (id_pedido, data_realizacao, observacao, fk_Clientes_id_cliente, fk_Funcionarios_id_funcionario)
+VALUES (15, '2023-11-12', 'Entregar na Rua L', 3, 4);
+
+-- Itens do Pedido 15
+INSERT INTO ItensPedido (Id_itensPedido, fk_Produtos_id_produto, fk_Pedidos_id_pedido, quantidade)
+VALUES (29, 5, 15, 1), (30, 7, 15, 4);
 
 -- Inserindo Lotes --
 -- Lote 1 for Produto 1
