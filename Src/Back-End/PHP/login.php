@@ -170,7 +170,7 @@
             }
         }
 
-        echo "Login inválido para clientes, funcionários ou admin.";
+        echo "<script>alert('Login inválido para clientes, funcionários ou admin.')</script>";
     }
     ?>
 

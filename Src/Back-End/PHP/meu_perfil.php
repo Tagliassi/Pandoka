@@ -1,84 +1,81 @@
 <?php
+session_start();
+
 // Incluir arquivo de conexão com o banco de dados
 require './conectaBD.php';
 
 $conn = mysqli_connect($servername, $username, $password, $database);
 
-    if (!$conn) {
-        die("<strong> Falha de conexão: </strong>" . mysqli_connect_error());
-    }
+if (!$conn) {
+    die("<strong> Falha de conexão: </strong>" . mysqli_connect_error());
+}
 
-    mysqli_query($conn,"SET NAMES 'utf8'");
-    mysqli_query($conn,'SET character_set_connection=utf8');
-    mysqli_query($conn,'SET character_set_client=utf8');
-    mysqli_query($conn,'SET character_set_results=utf8');
+if (!isset($_SESSION['id_cliente'])) {
+    // Se o cliente não estiver logado, redirecione para a página de login
+    header("Location: ./login.php");
+    exit();
+}
+    
+mysqli_query($conn,"SET NAMES 'utf8'");
+mysqli_query($conn,'SET character_set_connection=utf8');
+mysqli_query($conn,'SET character_set_client=utf8');
+mysqli_query($conn,'SET character_set_results=utf8');
 
-// Função para buscar e exibir informações dos funcionários
-function exibirFuncionarios() {
+// Função para buscar e exibir informações dos clientes
+function exibirCliente() {
     global $conn;
 
-    $sql = "SELECT * FROM Funcionarios";
+    $id_cliente = $_SESSION['id_cliente'];
+
+    $sql = "SELECT * FROM Clientes WHERE id_cliente = $id_cliente";
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
         echo "<table>";
-        echo "<tr><th>ID</th><th>Nome</th><th>Data de Nascimento</th><th>Data de Admissão</th><th>Salário</th><th>Ação</th></tr>";
+        echo "<tr><th>ID</th><th>Nome</th><th>CPF</th><th>Data de Nascimento</th><th>CEP</th><th>Logradouro</th><th>Numero</th><th>Bairro</th><th>Cidade</th></tr>";
         while ($row = mysqli_fetch_assoc($result)) {
             echo "<tr>";
-            echo "<td>" . $row["id_funcionario"] . "</td>";
-            echo "<td width='30%'>" . $row["nome"] . "</td>";
-            echo "<td>" . $row["data_nascimento"] . "</td>";
-            echo "<td>" . $row["data_admissao"] . "</td>";
-            echo "<td>R$ " . number_format($row["salario"], 2, ',', '.') . "</td>";
+            echo "<td>" . $row["id_cliente"] . "</td>";
+            echo "<td>" . $row["nome"] . "</td>";
+
+            $cpf = $row["cpf"];
+            $cpf_formatado = preg_replace('/(\d{3})(\d{3})(\d{3})(\d{2})/', '$1.$2.$3-$4', $cpf);
+            echo "<td>" . $cpf_formatado . "</td>";
+
+            $data_nascimento = $row["data_nascimento"];
+            $data_formatada = date('d/m/Y', strtotime($data_nascimento));
+            echo "<td>" . $data_formatada . "</td>";
+
+            $cep = $row["cep"];
+            $cep_formatado = preg_replace('/^(\d{5})(\d{3})$/', '$1-$2', $cep);
+            echo "<td>" . $cep_formatado . "</td>";
+
+            echo "<td>" . $row["rua"] . "</td>";
+            echo "<td>" . $row["numero"] . "</td>";
+            echo "<td>" . $row["bairro"] . "</td>";
+            echo "<td>" . $row["cidade"] . "</td>";
             echo "<td width='20%'>";
-            echo "<a href='editar_funcionario.php?id=" . $row['id_funcionario'] . "'>Editar</a> | ";
-            echo "<a href='excluir_funcionario.php?id=" . $row['id_funcionario'] . "'>Excluir</a>";
+            echo "<a class='button-link edit-button' href='editar_cliente.php?id=" . $row['id_cliente'] . "'>Editar</a> | ";
+            echo "<a class='button-link delete-button' href='excluir_cliente.php?id=" . $row['id_cliente'] . "'>Excluir</a>";
             echo "</td>";
             echo "</tr>";
         }
         echo "</table>";
     } else {
-        echo "Nenhum funcionário encontrado.";
+        echo "Nenhum cliente encontrado.";
     }
 }
 
 // Se o método for POST, significa que um funcionário foi excluído
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_excluir'])) {
     $id_excluir = $_POST['id_excluir'];
-    $sql_delete = "DELETE FROM Funcionarios WHERE id_funcionario = $id_excluir";
+    $sql_delete = "DELETE FROM Clientes WHERE id_cliente = $id_excluir";
     if (mysqli_query($conn, $sql_delete)) {
-        echo "<script>alert('Funcionário excluído com sucesso!');</script>";
+        echo "<script>alert('Cliente excluído com sucesso!');</script>";
         // Recarregar a página ou redirecionar após a exclusão
         header("Refresh:0");
     } else {
-        echo "Erro ao excluir funcionário: " . mysqli_error($conn);
-    }
-}
-?>
-
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    require_once './conectaBD.php';
-    $conn = mysqli_connect($servername, $username, $password, $database);
-
-    // Verificar a conexão
-    if (!$conn) {
-        die("<strong> Falha de conexão: </strong>" . mysqli_connect_error());
-    }
-
-    // Receber os dados do formulário
-    $nome = $_POST['nome'];
-    $data_nascimento = $_POST['data_nascimento'];
-    $salario = $_POST['salario'];
-
-    // Validar e formatar os dados, executar a consulta SQL para inserção no banco de dados
-    $query = "INSERT INTO Funcionarios (nome, data_nascimento, data_admissao, salario) 
-              VALUES ('$nome', '$data_nascimento', NOW(), '$salario')";
-
-    if ($conn->query($query) === TRUE) {
-        echo "<script>alert('Cadastro de funcionário realizado com sucesso!');</script>";
-    } else {
-        echo "Erro ao cadastrar funcionário: " . $conn->error;
+        echo "Erro ao excluir cliente: " . mysqli_error($conn);
     }
 }
 ?>
@@ -92,19 +89,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(to right, #ff444b, #ff5c61); 
+            background: linear-gradient(to right, #ff444b, #ff5c61);
+            align-itens: center;
         }
 
         .container {
             display: flex;
             justify-content: center;
-            width: 100%;
-            margin: 60px auto;
+            width: 100vw;
+            margin: 30px auto;
         }
 
         .lista-funcionarios,
         .cadastro-funcionario {
-            width: 40%;
+            width: 100%;
             background-color: #fff;
             padding: 20px;
             border-radius: 8px;
@@ -114,7 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         .lista-funcionarios{
-            width: 50%;
+            width: 100%;
         }
 
         table {
@@ -183,6 +181,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         .sair a:hover {
             background-color: #000;
         }
+
+       .button-link {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .edit-button {
+            background-color: #4CAF50; 
+            color: white; 
+        }
+
+        .delete-button {
+            background-color: #ff444b;
+            color: white; 
+        }
+
+        .button-link:hover {
+            background-color: #333;
+        }
     </style>
 </head>
 <body>
@@ -190,25 +211,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <div class="container">
     <!-- Seção da lista de funcionários -->
     <div class="lista-funcionarios">
-        <h1>Lista de Funcionários</h1>
-        <?php exibirFuncionarios(); ?>
-    </div>
-
-    <!-- Seção de cadastro de funcionários -->
-    <div class="cadastro-funcionario">
-        <h1>Cadastro de Funcionários</h1>
-        <form method="post" action="">
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome">
-
-            <label for="data_nascimento">Data de Nascimento:</label>
-            <input type="date" id="data_nascimento" name="data_nascimento">
-
-            <label for="salario">Salário:</label>
-            <input type="text" id="salario" name="salario">
-
-            <input type="submit" value="Cadastrar Funcionário">
-        </form>
+        <h1>Meu Perfil</h1>
+        <?php exibirCliente(); ?>
     </div>
 </div>
 
