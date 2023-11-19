@@ -12,7 +12,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: url('../../../Front-End/IMGS/gif.gif') center center no-repeat;
+            background: url('../IMGS/gif.gif') center center no-repeat;
             background-size: cover;
             animation: animatedBackground 20s ease infinite;
         }
@@ -22,9 +22,11 @@
             max-width: 400px;
             padding: 30px;
             border-radius: 10px;
-            background-color: #;
+            background-color: rgba(255, 92, 97, 0.9); /* Cor vermelha com 70% de opacidade */
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
+
+
 
         label {
             font-weight: bold;
@@ -96,7 +98,7 @@
 <body>
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        require_once '../../../Back-End/PHP/conectaBD.php';
+        require_once './conectaBD.php';
         $conn = mysqli_connect($servername, $username, $password, $database);
 
         if (!$conn) {
@@ -155,7 +157,7 @@
         }
 
         if ($conn->query($query) === TRUE) {
-            echo "Cadastro realizado com sucesso!";
+            echo "<script>alert('Cadastro realizado com sucesso!');</script>";
         } else {
             echo "Erro ao cadastrar: " . $conn->error;
         }

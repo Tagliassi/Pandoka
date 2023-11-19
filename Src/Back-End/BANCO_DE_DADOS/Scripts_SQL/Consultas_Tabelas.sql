@@ -17,7 +17,7 @@ JOIN
 JOIN
     Produtos pr ON ip.fk_Produtos_id_produto = pr.id_produto;
 
--- Consulta 02 --
+-- Procedure 01 --
 DELIMITER //
 
 CREATE PROCEDURE ObterDetalhesPedido (IN pedido_id INT)
@@ -75,3 +75,39 @@ DELIMITER ;
 SET @pedido_id = 1; -- Use a variable that matches the parameter name
 CALL ObterDetalhesPedido(@pedido_id);
 SELECT @pedido_id;
+
+
+-- Trigger 01 --
+DELIMITER // 
+
+CREATE TRIGGER AtualizarEstoquePedido 
+
+AFTER INSERT ON ItensPedido 
+
+FOR EACH ROW 
+
+BEGIN 
+
+    DECLARE produto_id INT; 
+
+    DECLARE quantidade_pedido INT; 
+
+    -- Obter o ID do produto e a quantidade do pedido inserido 
+
+    SELECT fk_Produtos_id_produto, quantidade INTO produto_id, quantidade_pedido 
+
+    FROM ItensPedido 
+
+    WHERE Id_itensPedido = NEW.Id_itensPedido; 
+   
+    UPDATE Produtos 
+
+    SET quantidade_estoque = quantidade_estoque - quantidade_pedido 
+
+    WHERE id_produto = produto_id; 
+
+END; 
+
+// 
+
+DELIMITER ; 

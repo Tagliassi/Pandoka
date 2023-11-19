@@ -8,7 +8,7 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            background: url('../../../Front-End/IMGS/gif.gif') no-repeat center center fixed;
+            background: url('../IMGS/gif.gif') no-repeat center center fixed;
             background-size: cover;
             animation: animatedBackground 20s ease infinite;
             height: 100vh;
@@ -70,11 +70,11 @@
 <body>
 
     <nav>
-        <img src="../../IMGS/logo_pandoka.jpeg" alt="Logo da Panificadora Pandoka">
+        <img src="../IMGS/logo_pandoka.jpeg" alt="Logo da Panificadora Pandoka">
         <ul>
-            <li><a href="../../../Back-End/PHP/catalogo_produtos_funcionario.php">Catálogo de Produtos</a></li>
-            <li><a href="../../../Back-End/PHP/adicionar_produto.php">Adicionar Produto</a></li>
-            <li><a href="../../HTML/Sign_And_Login/login.php">Sair</a></li>
+            <li><a href="./catalogo_produtos_funcionario.php">Catálogo de Produtos</a></li>
+            <li><a href="./adicionar_produto.php">Adicionar Produto</a></li>
+            <li><a href="./login.php">Sair</a></li>
         </ul>
     </nav>
 
