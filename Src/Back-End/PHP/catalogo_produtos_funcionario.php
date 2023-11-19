@@ -85,24 +85,33 @@
             text-decoration: underline;
         }
     </style>
+    <script>
+    var imagens = document.querySelectorAll('.logo');
+
+    imagens.forEach(function(imagem) {
+        var novoCaminho = "./../IMGS/logo_pandoka.jpeg";
+
+        imagem.src = novoCaminho;
+    });
+
+    </script>
 </head>
 <body>
-
     <!-- Verificação do login do funcionario -->
     <?php
         session_start();
 
         if (!isset($_SESSION['id_funcionario'])) {
             // Se o funcionario não estiver logado, redirecione para a página de login
-            header("Location: ../../Front-End/HTML/Sign_And_Login/login.php");
+            header("Location: ./login.php");
             exit();
         }
 
         $id_funcionario = $_SESSION['id_funcionario'];
 
         // Inclui arquivos necessários após a verificação do login
-        require '../../Front-End/HTML/Pagina_Principal/pagina_funcionario.php';
-        require '../../Back-End/PHP/conectaBD.php';
+        require './pagina_funcionario.php';
+        require './conectaBD.php';
 
         // Cria conexão
         $conn = mysqli_connect($servername, $username, $password, $database);

@@ -12,7 +12,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: url('../../../Front-End/IMGS/gif.gif') center center no-repeat;
+            background: url('./../IMGS/gif.gif') center center no-repeat;
             background-size: cover;
             animation: animatedBackground 20s ease infinite;
         }
@@ -23,12 +23,12 @@
             height: 200px;
             padding: 30px;
             border-radius: 10px;
-            background-color: #;
+            background-color: rgba(255, 92, 97, 0.9);
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             align-items: center;
             justify-content: center;
-            
         }
+
 
         label {
             font-weight: bold;
@@ -113,7 +113,7 @@
 <body>
     <?php
     session_start();
-    require '../../../Back-End/PHP/conectaBD.php';
+    require './conectaBD.php';
 
     $conn = mysqli_connect($servername, $username, $password, $database);
 
@@ -136,7 +136,7 @@
             $cliente = $result_cliente->fetch_assoc();
             $_SESSION['login'] = $login;
             $_SESSION['id_cliente'] = $cliente['id_cliente'];
-            header("Location: ../../../Front-End/HTML/Pagina_Principal/pagina_cliente.php");
+            header("Location: ./pagina_cliente.php");
             exit();
         }
 
@@ -147,7 +147,7 @@
             $funcionario = $result_funcionario->fetch_assoc();
             $_SESSION['login'] = $login;
             $_SESSION['id_funcionario'] = $funcionario['id_funcionario'];
-            header("Location: ../../../Front-End/HTML/Pagina_Principal/pagina_funcionario.php");
+            header("Location: ./pagina_funcionario.php");
             exit();
         }
 

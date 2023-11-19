@@ -70,11 +70,11 @@
     session_start();
 
     if (!isset($_SESSION['id_funcionario'])) {
-        header("Location: ../../Front-End/HTML/Sign_And_Login/login.php");
+        header("Location: ./login.php");
         exit();
     }
 
-    require '../../Back-End/PHP/conectaBD.php'; // Caminho para o arquivo de conexão com o banco de dados
+    require './conectaBD.php'; // Caminho para o arquivo de conexão com o banco de dados
 
     $conn = mysqli_connect($servername, $username, $password, $database);
 

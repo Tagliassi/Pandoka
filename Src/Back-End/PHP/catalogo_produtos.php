@@ -88,15 +88,15 @@
 
         if (!isset($_SESSION['id_cliente'])) {
             // Se o cliente não estiver logado, redirecione para a página de login
-            header("Location: ../../Front-End/HTML/Sign_And_Login/login.php");
+            header("Location: ./login.php");
             exit();
         }
 
         $id_cliente = $_SESSION['id_cliente'];
 
         // Inclui arquivos necessários após a verificação do login
-        require '../../Front-End/HTML/Pagina_Principal/pagina_cliente.php';
-        require '../../Back-End/PHP/conectaBD.php';
+        require './pagina_cliente.php';
+        require './conectaBD.php';
 
         // Cria conexão
         $conn = mysqli_connect($servername, $username, $password, $database);
@@ -143,7 +143,7 @@
                     // Verificação da disponibilidade do produto
                     if ($row['disponibilidade'] == true && $row['quantidade_estoque'] > 0) {
                         // Formulário para adicionar ao carrinho
-                        echo "<form action='../../Back-End/PHP/carrinho_compras.php' method='post'>";
+                        echo "<form action='./carrinho_compras.php' method='post'>";
                         echo "<input type='hidden' name='produto_id' value='{$codigo}'>";
                         echo "<input type='hidden' name='id_cliente' value='{$id_cliente}'>";
                         echo "<input type='number' name='quantidade' min='1' max='{$row['quantidade_estoque']}' placeholder='Quantidade' required>";

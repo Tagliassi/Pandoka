@@ -2,12 +2,12 @@
 session_start();
 
 if (!isset($_SESSION['id_funcionario'])) {
-    header("Location: ../../Front-End/HTML/Sign_And_Login/login.php");
+    header("Location: ./login.php");
     exit();
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    require '../../Back-End/PHP/conectaBD.php'; // Caminho para o arquivo de conexão com o banco de dados
+    require './conectaBD.php'; // Caminho para o arquivo de conexão com o banco de dados
 
     $conn = mysqli_connect($servername, $username, $password, $database);
 
@@ -25,15 +25,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "UPDATE Produtos SET nome = '$nome', valor = '$valor', disponibilidade = '$disponibilidade', quantidade_estoque = '$quantidade_estoque' WHERE id_produto = $produto_id";
 
     if (mysqli_query($conn, $sql)) {
-        echo "Dados do produto atualizados com sucesso!";
-        header("Location: ../../Back-End/PHP/catalogo_produtos_funcionario.php");
+        echo "<script>alert('Dados do produto atualizados com sucesso!');</script>";
+        header("Location: ./catalogo_produtos_funcionario.php");
     } else {
         echo "Erro ao atualizar dados do produto: " . mysqli_error($conn);
     }
 
     mysqli_close($conn);
 } else {
-    header("Location: ../../Front-End/HTML/Sign_And_Login/login.php");
+    header("Location: ./login.php");
     exit();
 }
 ?>

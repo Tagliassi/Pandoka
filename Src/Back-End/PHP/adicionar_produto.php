@@ -60,12 +60,12 @@
 session_start();
 
 if (!isset($_SESSION['id_funcionario'])) {
-    header("Location: ../../Front-End/HTML/Sign_And_Login/login.php");
+    header("Location: ./login.php");
     exit();
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    require '../../Back-End/PHP/conectaBD.php'; // Caminho para o arquivo de conexão com o banco de dados
+    require './conectaBD.php'; // Caminho para o arquivo de conexão com o banco de dados
 
     $conn = mysqli_connect($servername, $username, $password, $database);
 
@@ -84,8 +84,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO Produtos (nome, valor, quantidade_estoque, disponibilidade, fk_Categoria_id_categoria) VALUES ('$nome', '$valor', '$quantidade_estoque', '$disponibilidade', '$categoria')";
 
     if (mysqli_query($conn, $sql)) {
-        echo "Novo produto adicionado com sucesso!";
-        header("Location: ../../Back-End/PHP/catalogo_produtos_funcionario.php");
+        echo "<script>alert('Novo produto adicionado com sucesso!');</script>";
+        header("Location: ./catalogo_produtos_funcionario.php");
     } else {
         echo "Erro ao adicionar novo produto: " . mysqli_error($conn);
     }
