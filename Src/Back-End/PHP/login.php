@@ -111,7 +111,7 @@
     </style>
 </head>
 <body>
-    <?php
+<?php
     session_start();
     require './conectaBD.php';
 
@@ -128,37 +128,84 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $login = $_POST['login'];
+        $user_type = $_POST['user_type']; // Recebendo o tipo de usuário
 
-        $query_cliente = "SELECT * FROM Clientes WHERE cpf = '$login'";
-        $result_cliente = $conn->query($query_cliente);
+        if ($user_type === 'cliente') {
+            $query_cliente = "SELECT * FROM Clientes WHERE cpf = '$login'";
+            $result_cliente = $conn->query($query_cliente);
 
-        if ($result_cliente->num_rows == 1) {
-            $cliente = $result_cliente->fetch_assoc();
-            $_SESSION['login'] = $login;
-            $_SESSION['id_cliente'] = $cliente['id_cliente'];
-            header("Location: ./pagina_cliente.php");
-            exit();
+            if ($result_cliente->num_rows == 1) {
+                $cliente = $result_cliente->fetch_assoc();
+                $_SESSION['login'] = $login;
+                $_SESSION['id_cliente'] = $cliente['id_cliente'];
+                header("Location: ./pagina_cliente.php");
+                exit();
+            }
+        } elseif ($user_type === 'funcionario') {
+            $query_funcionario = "SELECT * FROM Funcionarios WHERE nome = '$login'";
+            $result_funcionario = $conn->query($query_funcionario);
+
+            if ($result_funcionario->num_rows == 1) {
+                $funcionario = $result_funcionario->fetch_assoc();
+                $_SESSION['login'] = $login;
+                $_SESSION['id_funcionario'] = $funcionario['id_funcionario'];
+                header("Location: ./pagina_funcionario.php");
+                exit();
+            }
+        } elseif ($user_type === 'admin') {
+            $admin_username = "admin";
+            $admin_password = "1234";
+    
+            if ($login === $admin_username) {
+                // Se o login é do admin, verifique a senha apenas para o admin
+                if (isset($_POST['password']) && $_POST['password'] === $admin_password) {
+                    $_SESSION['login'] = $login;
+                    header("Location: ./admin.php");
+                    exit();
+                } else {
+                    echo "Senha inválida para o admin.";
+                }
+            } else {
+                echo "Login inválido para admin.";
+            }
         }
 
-        $query_funcionario = "SELECT * FROM Funcionarios WHERE nome = '$login'";
-        $result_funcionario = $conn->query($query_funcionario);
-
-        if ($result_funcionario->num_rows == 1) {
-            $funcionario = $result_funcionario->fetch_assoc();
-            $_SESSION['login'] = $login;
-            $_SESSION['id_funcionario'] = $funcionario['id_funcionario'];
-            header("Location: ./pagina_funcionario.php");
-            exit();
-        }
-
-        echo "Login inválido para clientes ou funcionários.";
+        echo "Login inválido para clientes, funcionários ou admin.";
     }
     ?>
- <form method="post" action="">
-        <label for="login">Login (CPF para clientes / Nome para funcionários):</label><br>
+
+    <form method="post" action="" id="loginForm">
+        <label for="login">Login (CPF para clientes / Nome para funcionários)</label><br>
         <input type="text" id="login" name="login"><br>
+
+        <div id="passwordField" style="display: none;"> <!-- Campo de senha -->
+            <label for="password">Senha:</label><br>
+            <input type="password" id="password" name="password"><br>
+        </div>
+
+        <label for="user_type">Selecione o tipo de usuário:</label><br>
+        <select name="user_type" id="user_type">
+            <option value="cliente">Cliente</option>
+            <option value="funcionario">Funcionário</option>
+            <option value="admin">Admin</option>
+        </select><br>
+
         <input type="submit" value="Entrar">
         <a href="./sign.php" class="btn-cadastrar">Cadastrar</a>
     </form>
+
+    <script>
+        document.getElementById('user_type').addEventListener('change', function() {
+            var userType = this.value;
+            var passwordField = document.getElementById('passwordField');
+
+            if (userType === 'admin') {
+                passwordField.style.display = 'block'; // Mostrar campo de senha
+            } else {
+                passwordField.style.display = 'none'; // Esconder campo de senha
+            }
+        });
+    </script>
+
 </body>
 </html>

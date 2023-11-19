@@ -96,7 +96,8 @@
     </style>
 </head>
 <body>
-    <?php
+
+<?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         require_once './conectaBD.php';
         $conn = mysqli_connect($servername, $username, $password, $database);
@@ -128,87 +129,48 @@
 
             $query = "INSERT INTO Clientes (nome, cpf) VALUES ('$nome', '$cpf')";
 
-        } else if ($tipo_usuario === 'funcionario') {
-            $data_nascimento = $_POST['data_nascimento'];
-
-            if (!strtotime($data_nascimento)) {
-                echo "Data de nascimento inválida. Use o formato YYYY-MM-DD.";
-                exit();
+            if ($conn->query($query) === TRUE) {
+                echo "<script>alert('Cadastro de cliente realizado com sucesso!');</script>";
+            } else {
+                echo "Erro ao cadastrar cliente: " . $conn->error;
             }
-
-            if (strtotime($data_nascimento) >= strtotime(date('Y-m-d'))) {
-                echo "Data de nascimento inválida. Deve ser anterior à data atual.";
-                exit();
-            }
-
-            $salario = $_POST['salario'];
-
-            if (!is_numeric($salario) || $salario <= 0) {
-                echo "Salário inválido. Insira um valor numérico positivo.";
-                exit();
-            }
-
-            $query = "INSERT INTO Funcionarios (nome, data_nascimento, data_admissao, salario) 
-                      VALUES ('$nome', '$data_nascimento', NOW(), '$salario')";
-
         } else {
             echo "Tipo de usuário inválido!";
             exit();
         }
 
-        if ($conn->query($query) === TRUE) {
-            echo "<script>alert('Cadastro realizado com sucesso!');</script>";
-        } else {
-            echo "Erro ao cadastrar: " . $conn->error;
-        }
+        mysqli_close($conn);
     }
-    ?>
-<form method="post" action="">
+?>
+    <form method="post" action="">
         <label for="tipo_usuario">Selecione o tipo de usuário:</label><br>
         <select name="tipo_usuario" id="tipo_usuario">
             <option value="cliente">Cliente</option>
-            <option value="funcionario">Funcionário</option>
         </select><br>
 
         <label for="nome">Nome:</label><br>
         <input type="text" id="nome" name="nome"><br>
 
-        <!-- campo CPF para clientes -->
+        <!-- Campo CPF para clientes -->
         <div id="campos_cpf">
             <label for="cpf">CPF:</label><br>
             <input type="text" id="cpf" name="cpf"><br>
-        </div>
-
-        <!-- campos específicos para funcionários -->
-        <div id="campos_funcionario" style="display: none;">
-            <label for="data_nascimento">Data de Nascimento:</label><br>
-            <input type="date" id="data_nascimento" name="data_nascimento"><br>
-
-            <label for="salario">Salário:</label><br>
-            <input type="text" id="salario" name="salario"><br>
         </div>
 
         <input type="submit" value="Cadastrar">
         <a href="./login.php">Já tem cadastro? Faça login aqui</a>
     </form>
 
-    <!-- Link para a página de login -->
-   
-
     <script>
         var tipoUsuarioSelect = document.getElementById("tipo_usuario");
         var camposCpf = document.getElementById("campos_cpf");
-        var camposFuncionario = document.getElementById("campos_funcionario");
 
         tipoUsuarioSelect.addEventListener("change", function() {
-            if (tipoUsuarioSelect.value === "funcionario") {
-                camposCpf.style.display = "none";
-                camposFuncionario.style.display = "block";
-            } else if (tipoUsuarioSelect.value === "cliente") {
+            if (tipoUsuarioSelect.value === "cliente") {
                 camposCpf.style.display = "block";
-                camposFuncionario.style.display = "none";
             }
         });
     </script>
+    
 </body>
 </html>
