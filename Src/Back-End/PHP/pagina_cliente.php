@@ -67,6 +67,7 @@
         <li><a href="./catalogo_produtos.php">Catálogo de Produtos</a></li>
         <li><a href="./carrinho_compras.php">Carrinho de Compras</a></li>
         <li><a href="./login.php">Sair</a></li>
+        <li><a href="./meu_perfil.php">Meu Perfil</a></li>
     </ul>
 </nav>
 
